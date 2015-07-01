@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+
+require 'octokit'
+require 'yaml'
+
+path = ARGV.shift
+unless path
+  STDERR.puts("usage: test config_path")
+  exit(1)
+end
+unless File.exist?(path)
+  STDERR.puts("#{path} does not exist")
+  exit(1)
+end
+
+config = YAML.load(File.read(path))
+token = config[:token]
+
+client = Octokit::Client.new(:access_token => token)
+stats = client.contributors_stats('soba1104/fp')
+stats.each do |stat|
+  total = stat[:total]
+  weeks = stat[:weeks]
+  author = stat[:author][:login]
+
+  puts "------ #{author} ------"
+  puts "total commits = #{total}"
+  weeks.each do |w|
+    t = Time.at(w[:w])
+    a = w[:a]
+    d = w[:d]
+    c = w[:c]
+    puts "#{t}: #{c} commits, +#{a}, -#{d}"
+  end
+end
