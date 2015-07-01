@@ -1,0 +1,6 @@
+:development:
+  :token: /config/token
+:test:
+  :token: /config/token
+:production:
+  :token: /config/token
