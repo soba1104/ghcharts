@@ -1,7 +1,7 @@
 Ghcharts::App.controllers do
   
   get :index do
-    'Hello~~'
+    render 'index/index'
   end
 
   # get :index, :map => '/foo/bar' do
