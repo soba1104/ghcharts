@@ -5,3 +5,12 @@
 body {
   @include blueprint-typography(true);
 }
+
+#stats {
+  @include container;
+
+  #chart {
+    @include column(24);
+    @include last;
+  }
+}

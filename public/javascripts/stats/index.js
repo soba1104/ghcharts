@@ -18,7 +18,7 @@ $(document).ready(function() {
         data: stats.dels,
       },
     ]
-    new Chart($('#line').get(0).getContext('2d')).Line({
+    new Chart($('#chart').get(0).getContext('2d')).Line({
       labels: labels,
       datasets: datasets,
     })
