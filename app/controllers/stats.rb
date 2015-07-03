@@ -1,4 +1,10 @@
 Ghcharts::App.controllers :stats do
+  get :index, :map => '/:org/:repo/stats' do
+    @org = params[:org]
+    @repo = params[:repo]
+    render 'stats/index'
+  end
+
   get :json, :map => '/:org/:repo/stats/json', :provides => :json do
     org = params[:org]
     repo = params[:repo]
@@ -12,7 +18,7 @@ Ghcharts::App.controllers :stats do
       author = s[:author]
       {
         :author => author[:login],
-        :weeks => weeks.map{|w|
+        :activity => weeks.map{|w|
           {
             :w => w[:w],
             :a => w[:a],
