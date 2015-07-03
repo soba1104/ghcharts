@@ -1,0 +1,7 @@
+@import "blueprint/reset";
+@import "partials/base";
+@import "blueprint";
+
+body {
+  @include blueprint-typography(true);
+}

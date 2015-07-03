@@ -31,3 +31,4 @@ gem 'padrino', '0.12.5'
 # end
 
 gem 'octokit'
+gem 'compass-blueprint'
