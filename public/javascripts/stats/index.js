@@ -1,6 +1,5 @@
 $(document).ready(function() {
   $.get($(location).attr('href') + '/json', function(data) {
-    console.log(data)
     var stat = data[0]
     var author = stat.author
     var activity = stat.activity
