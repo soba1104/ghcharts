@@ -14,11 +14,11 @@ body {
   }
 
   #legends {
-    @include column(3);
+    @include column(2);
     @include last;
 
     .legend {
-      @include column(3);
+      @include column(2);
       @include last;
       text-align: center;
     }
