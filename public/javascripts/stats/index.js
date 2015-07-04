@@ -2,9 +2,9 @@ $(document).ready(function() {
   var stats = new Stats($(location).attr('href') + '/json')
 
   var lvm = new Vue({
-    el: '#legend',
+    el: '#legends',
     data: {
-      labels: [],
+      legends: [],
     },
   })
 
@@ -14,18 +14,19 @@ $(document).ready(function() {
     var labels = stats.dates.slice(-limit)
     var adds = stats.adds.slice(-limit)
     var dels = stats.dels.slice(-limit)
+    var color = 'rgba(255, 228, 225, 1)'
     var datasets = [
       {
         fillColor: 'rgba(255, 255, 255, 0)',
-        strokeColor: 'rgba(255, 228, 225, 1)',
-        pointColor: 'rgba(255, 228, 225, 1)',
+        strokeColor: color,
+        pointColor: color,
         pointStrokeColor: '#fff',
         data: adds,
       },
       {
         fillColor: 'rgba(255, 255, 255, 0)',
-        strokeColor: 'rgba(230, 230, 250, 1)',
-        pointColor: 'rgba(230, 230, 250, 1)',
+        strokeColor: color,
+        pointColor: color,
         pointStrokeColor: '#fff',
         data: dels,
       },
@@ -34,7 +35,12 @@ $(document).ready(function() {
       labels: labels,
       datasets: datasets,
     })
-    lvm.labels = [{name: author}]
+    lvm.legends = [
+      {
+        name: author,
+        color: color,
+      }
+    ]
   }
   stats.load()
 })

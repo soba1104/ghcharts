@@ -11,7 +11,7 @@ html
   body
     #stats
       canvas#chart
-      #legend
-        template v-repeat='label: labels'
-          .label
-            | {{label.name}}
+      #legends
+        template v-repeat='legend: legends'
+          .legend style='background-color: {{legend.color}}'
+            | {{legend.name}}
