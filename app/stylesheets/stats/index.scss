@@ -10,16 +10,15 @@ body {
   @include container;
 
   #chart {
-    @include column(24);
-    @include last;
+    @include column(21);
   }
 
   #legends {
-    @include column(24);
+    @include column(3);
     @include last;
 
     .legend {
-      @include column(24);
+      @include column(3);
       @include last;
       text-align: center;
     }
