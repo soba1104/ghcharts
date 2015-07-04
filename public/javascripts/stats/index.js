@@ -28,7 +28,7 @@ $(document).ready(function() {
     var labels = []
     var datasets = []
     var legends = []
-    var activities = stats.activities().span(10)
+    var activities = stats.activities().span(10).order_by('abs')
     var end = Math.min(activities.num(), colors.length)
     for (var i = 0; i < end; i++) {
       var activity = activities.get(i)

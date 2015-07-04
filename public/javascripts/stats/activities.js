@@ -8,5 +8,12 @@ function Activities(activities) {
         return act.span(span)
       }))
     },
+    order_by: function(order) {
+      return new Activities(activities.sort(function(a0, a1) {
+        var s0 = a0.score[order]
+        var s1 = a1.score[order]
+        return s1 - s0
+      }))
+    },
   }
 }
