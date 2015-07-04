@@ -1,4 +1,4 @@
-function Stat(stat) {
+function Stat(stat, span) {
   var author = stat.author
   var activity = stat.activity
   var dates = []
@@ -17,11 +17,21 @@ function Stat(stat) {
     adds.push(add)
     dels.push(del)
   }
+  if (span) {
+    dates = dates.slice(-span)
+    adds = adds.slice(-span)
+    dels = dels.slice(-span)
+  }
 
   return {
     author: author,
     dates: dates,
     adds: adds,
     dels: dels,
+    stat: stat,
+
+    span: function(span) {
+      return (new Stat(this.stat, span))
+    }
   }
 }

@@ -4,6 +4,12 @@ function Stats(url) {
     stats: [],
     get: function(i) { return this.stats[i] },
     length: function() { return this.stats.length },
+    span: function(span, stats) {
+      stats = stats ? stats : this.stats
+      return stats.map(function(s) {
+        s.span(span)
+      })
+    },
     load: function() {
       $.get(url, function(data) {
         var stats = []
