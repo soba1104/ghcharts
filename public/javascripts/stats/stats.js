@@ -1,6 +1,7 @@
 function Stats(url) {
   return {
     url: url,
+    author: undefined,
     labels: [],
     dates: [],
     dels: [],
@@ -25,6 +26,7 @@ function Stats(url) {
           adds.push(add)
           dels.push(del)
         }
+        this.author = author
         this.dates = dates
         this.adds = adds
         this.dels = dels
