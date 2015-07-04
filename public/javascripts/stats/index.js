@@ -25,42 +25,43 @@ $(document).ready(function() {
   ]
 
   stats.onload = function() {
+    var labels = []
+    var datasets = []
+    var legends = []
     var limit = 10
     var end = Math.min(stats.length(), colors.length)
     for (var i = 0; i < end; i++) {
       var stat = stats.get(i)
       var author = stat.author
-      var labels = stat.dates.slice(-limit)
       var adds = stat.adds.slice(-limit)
       var dels = stat.dels.slice(-limit)
       var color = colors[i]
-      var datasets = [
-        {
-          fillColor: 'rgba(255, 255, 255, 0)',
-          strokeColor: color,
-          pointColor: color,
-          pointStrokeColor: '#fff',
-          data: adds,
-        },
-        {
-          fillColor: 'rgba(255, 255, 255, 0)',
-          strokeColor: color,
-          pointColor: color,
-          pointStrokeColor: '#fff',
-          data: dels,
-        },
-      ]
-      new Chart($('#chart').get(0).getContext('2d')).Line({
-        labels: labels,
-        datasets: datasets,
+
+      labels = stat.dates.slice(-limit)
+      datasets.push({
+        fillColor: 'rgba(255, 255, 255, 0)',
+        strokeColor: color,
+        pointColor: color,
+        pointStrokeColor: '#fff',
+        data: adds,
       })
-      lvm.legends = [
-        {
-          author: author,
-          color: color,
-        }
-      ]
+      datasets.push({
+        fillColor: 'rgba(255, 255, 255, 0)',
+        strokeColor: color,
+        pointColor: color,
+        pointStrokeColor: '#fff',
+        data: dels,
+      })
+      legends.push({
+        author: author,
+        color: color,
+      })
     }
+    new Chart($('#chart').get(0).getContext('2d')).Line({
+      labels: labels,
+      datasets: datasets,
+    })
+    lvm.legends = legends
   }
   stats.load()
 })
