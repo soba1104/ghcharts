@@ -26,38 +26,41 @@ $(document).ready(function() {
 
   stats.onload = function() {
     var limit = 10
-    var stat = stats.get(0)
-    var author = stat.author
-    var labels = stat.dates.slice(-limit)
-    var adds = stat.adds.slice(-limit)
-    var dels = stat.dels.slice(-limit)
-    var color = colors[0]
-    var datasets = [
-      {
-        fillColor: 'rgba(255, 255, 255, 0)',
-        strokeColor: color,
-        pointColor: color,
-        pointStrokeColor: '#fff',
-        data: adds,
-      },
-      {
-        fillColor: 'rgba(255, 255, 255, 0)',
-        strokeColor: color,
-        pointColor: color,
-        pointStrokeColor: '#fff',
-        data: dels,
-      },
-    ]
-    new Chart($('#chart').get(0).getContext('2d')).Line({
-      labels: labels,
-      datasets: datasets,
-    })
-    lvm.legends = [
-      {
-        name: author,
-        color: color,
-      }
-    ]
+    var end = Math.min(stats.length(), colors.length)
+    for (var i = 0; i < end; i++) {
+      var stat = stats.get(i)
+      var author = stat.author
+      var labels = stat.dates.slice(-limit)
+      var adds = stat.adds.slice(-limit)
+      var dels = stat.dels.slice(-limit)
+      var color = colors[i]
+      var datasets = [
+        {
+          fillColor: 'rgba(255, 255, 255, 0)',
+          strokeColor: color,
+          pointColor: color,
+          pointStrokeColor: '#fff',
+          data: adds,
+        },
+        {
+          fillColor: 'rgba(255, 255, 255, 0)',
+          strokeColor: color,
+          pointColor: color,
+          pointStrokeColor: '#fff',
+          data: dels,
+        },
+      ]
+      new Chart($('#chart').get(0).getContext('2d')).Line({
+        labels: labels,
+        datasets: datasets,
+      })
+      lvm.legends = [
+        {
+          author: author,
+          color: color,
+        }
+      ]
+    }
   }
   stats.load()
 })
