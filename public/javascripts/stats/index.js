@@ -28,15 +28,15 @@ $(document).ready(function() {
     var labels = []
     var datasets = []
     var legends = []
-    var limit = 10
     var end = Math.min(stats.length(), colors.length)
     for (var i = 0; i < end; i++) {
       var author = stats.get(i)
-      var adds = author.adds.slice(-limit)
-      var dels = author.dels.slice(-limit)
+      var activity = author.activity.span(10)
+      var adds = activity.adds
+      var dels = activity.dels
       var color = colors[i]
 
-      labels = author.dates.slice(-limit)
+      labels = activity.dates
       datasets.push({
         fillColor: 'rgba(255, 255, 255, 0)',
         strokeColor: color,

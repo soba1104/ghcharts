@@ -15,7 +15,7 @@ function Stats(url) {
         var stats = []
         for (var i = 0; i < data.length; i++) {
           var name = data[i].author
-          var activity = data[i].activity
+          var activity = new Activity(data[i].activity)
           stats.push(new Author(name, activity))
         }
         this.stats = stats
