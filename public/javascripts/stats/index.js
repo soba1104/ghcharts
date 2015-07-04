@@ -28,9 +28,10 @@ $(document).ready(function() {
     var labels = []
     var datasets = []
     var legends = []
-    var end = Math.min(stats.length(), colors.length)
+    var activities = stats.activities()
+    var end = Math.min(activities.length, colors.length)
     for (var i = 0; i < end; i++) {
-      var activity = stats.get(i).span(10)
+      var activity = activities[i].span(10)
       var author = activity.author
       var adds = activity.adds
       var dels = activity.dels

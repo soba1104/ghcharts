@@ -1,18 +1,17 @@
 function Stats(url) {
   return {
     url: url,
-    stats: [],
-    get: function(i) { return this.stats[i] },
-    length: function() { return this.stats.length },
+    stats: {activities: []},
+    activities: function() { return this.stats.activities },
     load: function() {
       $.get(url, function(data) {
-        var stats = []
+        var activities = []
         for (var i = 0; i < data.length; i++) {
           var author = data[i].author
           var activity = data[i].activity
-          stats.push(new Activity(author, activity))
+          activities.push(new Activity(author, activity))
         }
-        this.stats = stats
+        this.stats = {activities: activities}
         this.onload()
       }.bind(this))
     },
