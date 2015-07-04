@@ -30,8 +30,8 @@ $(document).ready(function() {
     var legends = []
     var end = Math.min(stats.length(), colors.length)
     for (var i = 0; i < end; i++) {
-      var author = stats.get(i)
-      var activity = author.activity.span(10)
+      var activity = stats.get(i).span(10)
+      var author = activity.author
       var adds = activity.adds
       var dels = activity.dels
       var color = colors[i]
@@ -52,7 +52,7 @@ $(document).ready(function() {
         data: dels,
       })
       legends.push({
-        author: author.name,
+        author: author,
         color: color,
       })
     }
