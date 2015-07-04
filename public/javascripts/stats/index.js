@@ -1,7 +1,16 @@
 $(document).ready(function() {
   var stats = new Stats($(location).attr('href') + '/json')
+
+  var lvm = new Vue({
+    el: '#legend',
+    data: {
+      labels: [],
+    },
+  })
+
   stats.onload = function() {
     var limit = 10
+    var author = stats.author
     var labels = stats.dates.slice(-limit)
     var adds = stats.adds.slice(-limit)
     var dels = stats.dels.slice(-limit)
@@ -25,6 +34,7 @@ $(document).ready(function() {
       labels: labels,
       datasets: datasets,
     })
+    lvm.labels = [{name: author}]
   }
   stats.load()
 })

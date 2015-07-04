@@ -5,8 +5,13 @@ html
     = stylesheet_link_tag 'stats/index'
     = javascript_include_tag 'jquery-2.1.4'
     = javascript_include_tag 'Chart'
+    = javascript_include_tag 'vue'
     = javascript_include_tag 'stats/stats'
     = javascript_include_tag 'stats/index'
   body
     #stats
       canvas#chart
+      #legend
+        template v-repeat='label: labels'
+          .label
+            | {{label.name}}

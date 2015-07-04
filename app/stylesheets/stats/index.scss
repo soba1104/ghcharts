@@ -13,4 +13,10 @@ body {
     @include column(24);
     @include last;
   }
+
+  #legend {
+    @include column(24);
+    @include last;
+    text-align: center;
+  }
 }
