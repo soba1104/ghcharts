@@ -11,7 +11,9 @@ function Stats(url) {
           var activity = data[i].activity
           activities.push(new Activity(author, activity))
         }
-        this.stats = {activities: activities}
+        this.stats = {
+          activities: new Activities(activities)
+        }
         this.onload()
       }.bind(this))
     },
