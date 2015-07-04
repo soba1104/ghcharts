@@ -1,35 +1,16 @@
 function Stats(url) {
   return {
     url: url,
-    author: undefined,
-    labels: [],
-    dates: [],
-    dels: [],
+    stats: [],
+    get: function(i) { return this.stats[i] },
+    length: function() { return this.stats.length },
     load: function() {
       $.get(url, function(data) {
-        var stat = data[0]
-        var author = stat.author
-        var activity = stat.activity
-        var dates = []
-        var adds = []
-        var dels = []
-        for (var i = 0; i < activity.length; i++) {
-          var date = new Date(activity[i].w * 1000)
-          var year = date.getFullYear()
-          var month = date.getMonth() + 1
-          var day = date.getDate()
-          var datestr = year + '/' + month + '/' + day
-          var add = activity[i].a
-          var del = -activity[i].d
-
-          dates.push(datestr)
-          adds.push(add)
-          dels.push(del)
+        var stats = []
+        for (var i = 0; i < data.length; i++) {
+          stats.push(new Stat(data[i]))
         }
-        this.author = author
-        this.dates = dates
-        this.adds = adds
-        this.dels = dels
+        this.stats = stats
         this.onload()
       }.bind(this))
     },

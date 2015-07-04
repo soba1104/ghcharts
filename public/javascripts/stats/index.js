@@ -10,10 +10,11 @@ $(document).ready(function() {
 
   stats.onload = function() {
     var limit = 10
-    var author = stats.author
-    var labels = stats.dates.slice(-limit)
-    var adds = stats.adds.slice(-limit)
-    var dels = stats.dels.slice(-limit)
+    var stat = stats.get(0)
+    var author = stat.author
+    var labels = stat.dates.slice(-limit)
+    var adds = stat.adds.slice(-limit)
+    var dels = stat.dels.slice(-limit)
     var color = 'rgba(255, 228, 225, 1)'
     var datasets = [
       {
