@@ -32,7 +32,7 @@ $(document).ready(function() {
     var end = Math.min(stats.length(), colors.length)
     for (var i = 0; i < end; i++) {
       var stat = stats.get(i)
-      var author = stat.author
+      var author = stat.name
       var adds = stat.adds.slice(-limit)
       var dels = stat.dels.slice(-limit)
       var color = colors[i]
