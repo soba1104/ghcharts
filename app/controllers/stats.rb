@@ -12,18 +12,21 @@ Ghcharts::App.controllers :stats do
     token = File.read(path)
     client = Octokit::Client.new(:access_token => token)
     stats = client.contributors_stats("#{org}/#{repo}")
-    stats.map{|s|
-      total = s[:total]
-      weeks = s[:weeks]
-      author = s[:author]
-      {
-        :author => author[:login],
-        :activity => weeks.map{|w|
-          {
-            :w => w[:w],
-            :a => w[:a],
-            :d => w[:d],
-            :c => w[:c],
+    {
+      :repository => "#{org}/#{repo}",
+      :activities => stats.map{|s|
+        total = s[:total]
+        weeks = s[:weeks]
+        author = s[:author]
+        {
+          :author => author[:login],
+          :activity => weeks.map{|w|
+            {
+              :w => w[:w],
+              :a => w[:a],
+              :d => w[:d],
+              :c => w[:c],
+            }
           }
         }
       }

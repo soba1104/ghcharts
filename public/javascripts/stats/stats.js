@@ -5,15 +5,14 @@ function Stats(url) {
     activities: function() { return this.stats.activities },
     load: function() {
       $.get(url, function(data) {
-        var activities = []
-        for (var i = 0; i < data.length; i++) {
-          var author = data[i].author
-          var activity = data[i].activity
-          activities.push(new Activity(author, activity))
-        }
-        this.stats = {
-          activities: new Activities(activities)
-        }
+        //var repository = data.repository
+        var acts = data.activities.map(function(act) {
+          return new Activity(
+            act.author,
+            act.activity
+          )
+        })
+        this.stats = {activities: new Activities(acts)}
         this.onload()
       }.bind(this))
     },
