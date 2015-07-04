@@ -14,7 +14,7 @@ function Stats(url) {
       $.get(url, function(data) {
         var stats = []
         for (var i = 0; i < data.length; i++) {
-          stats.push(new Stat(data[i]))
+          stats.push(new Author(data[i]))
         }
         this.stats = stats
         this.onload()

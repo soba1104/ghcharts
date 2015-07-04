@@ -1,4 +1,4 @@
-function Stat(stat, span) {
+function Author(stat, span) {
   var author = stat.author
   var activity = stat.activity
   var dates = []
@@ -31,7 +31,7 @@ function Stat(stat, span) {
     stat: stat,
 
     span: function(span) {
-      return (new Stat(this.stat, span))
+      return (new Author(this.stat, span))
     }
   }
 }
