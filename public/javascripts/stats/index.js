@@ -31,13 +31,12 @@ $(document).ready(function() {
     var limit = 10
     var end = Math.min(stats.length(), colors.length)
     for (var i = 0; i < end; i++) {
-      var stat = stats.get(i)
-      var author = stat.name
-      var adds = stat.adds.slice(-limit)
-      var dels = stat.dels.slice(-limit)
+      var author = stats.get(i)
+      var adds = author.adds.slice(-limit)
+      var dels = author.dels.slice(-limit)
       var color = colors[i]
 
-      labels = stat.dates.slice(-limit)
+      labels = author.dates.slice(-limit)
       datasets.push({
         fillColor: 'rgba(255, 255, 255, 0)',
         strokeColor: color,
@@ -53,7 +52,7 @@ $(document).ready(function() {
         data: dels,
       })
       legends.push({
-        author: author,
+        author: author.name,
         color: color,
       })
     }
