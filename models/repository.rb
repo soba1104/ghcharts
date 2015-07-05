@@ -3,5 +3,5 @@ class Repository
   include Mongoid::Timestamps # adds created_at and updated_at fields
 
   field :name, type: String
-  embeds_many :activities
+  has_many :activities
 end

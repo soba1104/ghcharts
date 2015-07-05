@@ -1,0 +1,43 @@
+#! /usr/bin/env padrino runner
+# vim:set ft=ruby:
+
+repo = ARGV.last
+path = Padrino.root(Config[:token])
+token = File.read(path)
+client = Octokit::Client.new(:access_token => token)
+
+
+stats = client.contributors_stats(repo)
+users = {}
+activities = []
+repository = Repository.new(:name => repo)
+repository.save!
+stats.each do |stat|
+  weeks = stat[:weeks]
+  author = stat[:author][:login]
+
+  puts "------ #{author} ------"
+  raise if users[author]
+  u = User.new(:name => author)
+  users[author] = u
+  u.save!
+  act = []
+  weeks.each do |w|
+    t = Time.at(w[:w])
+    a = w[:a]
+    d = w[:d]
+    c = w[:c]
+    act << Activity.new(
+      :user => u,
+      :repository => repository,
+      :time => t,
+      :add => a,
+      :del => d,
+      :commit => c
+    )
+  end
+  act.each do |a|
+    puts a.inspect
+    a.save!
+  end
+end
