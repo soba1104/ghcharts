@@ -14,6 +14,7 @@ source 'https://rubygems.org'
 gem 'rake'
 
 # Component requirements
+gem 'mongoid', '~>3.0.0'
 gem 'compass'
 gem 'slim'
 
