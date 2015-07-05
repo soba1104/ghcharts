@@ -32,6 +32,8 @@ module Ghcharts
     end
 
     access_control.roles_for :admin do |role|
+      role.project_module :users, '/users'
+      role.project_module :activities, '/activities'
       role.project_module :repositories, '/repositories'
       role.project_module :accounts, '/accounts'
     end
