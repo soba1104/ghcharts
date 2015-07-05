@@ -8,4 +8,5 @@ class Activity
   field :commit, :type => Integer
   belongs_to :user
   belongs_to :repository
+  index({repository: 1, user: 1, time: 1}, {unique: true})
 end
