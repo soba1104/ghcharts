@@ -33,3 +33,9 @@ stats.each do |stat|
     puts "#{t}: #{c} commits, +#{a}, -#{d}"
   end
 end
+
+repos = client.organization_repositories('aerospike')
+repos.each do |repo|
+  name = repo[:full_name]
+  puts name
+end
