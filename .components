@@ -7,3 +7,4 @@
 :stylesheet: compass
 :namespace: Ghcharts
 :migration_format: number
+:admin_renderer: slim
