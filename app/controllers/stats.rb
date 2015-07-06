@@ -5,6 +5,28 @@ Ghcharts::App.controllers :stats do
     render 'stats/index'
   end
 
+  get :json, :map => '/:org/:repo/stats2/json', :provides => :json do
+    org = params[:org]
+    repo = params[:repo]
+    name = "#{org}/#{repo}"
+    repository = Repository.where(name: name).first
+    unless repository
+      # TODO body を定義する
+      error(404)
+    end
+    activities = Activity.where(repository: repository)
+    activities.map{|act|
+      {
+        repository: name,
+        user: act.user.name,
+        time: act.time.to_i,
+        add: act.add,
+        del: act.del,
+        commit: act.commit,
+      }
+    }.to_json
+  end
+
   get :json, :map => '/:org/:repo/stats/json', :provides => :json do
     org = params[:org]
     repo = params[:repo]
