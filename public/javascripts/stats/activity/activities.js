@@ -7,12 +7,7 @@ function Activities(d) {
       return dates_a.sort()
     },
     users: function() {
-      var data = this.data
-      var users_h = {}
-      for (var i = 0; i < data.length; i++) {
-        var act = data[i]
-        users_h[act.user] = true
-      }
+      var users_h = this.group_by_user()
       var users_a = Object.keys(users_h)
       return users_a
     },
@@ -32,6 +27,16 @@ function Activities(d) {
         var act = data[i]
         groups[act.date] = groups[act.date] || []
         groups[act.date].push(act)
+      }
+      return groups
+    },
+    group_by_user: function() {
+      var data = this.data
+      var groups = {}
+      for (var i = 0; i < data.length; i++) {
+        var act = data[i]
+        groups[act.user] = groups[act.user] || []
+        groups[act.user].push(act)
       }
       return groups
     },
