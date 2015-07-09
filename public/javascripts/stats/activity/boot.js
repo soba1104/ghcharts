@@ -1,7 +1,8 @@
 $(document).ready(function() {
   var loader = new Loader()
   loader.onload = function(activities) {
-    activities.filter_by_span(10)
+    activities = activities.filter_by_span(10)
+    console.log(activities.data)
   }
   loader.load($(location).attr('href') + '/json')
 })
