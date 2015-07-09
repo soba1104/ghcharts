@@ -2,12 +2,7 @@ function Activities(d) {
   return {
     data: d,
     dates: function() {
-      var data = this.data
-      var dates_h = {}
-      for (var i = 0; i < data.length; i++) {
-        var act = data[i]
-        dates_h[act.date] = true
-      }
+      var dates_h = this.group_by_date()
       var dates_a = Object.keys(dates_h)
       return dates_a.sort()
     },
@@ -29,6 +24,16 @@ function Activities(d) {
       return new Activities(data.filter(function(act) {
         return s <= act.date && act.date <= e
       }))
+    },
+    group_by_date: function() {
+      var data = this.data
+      var groups = {}
+      for (var i = 0; i < data.length; i++) {
+        var act = data[i]
+        groups[act.date] = groups[act.date] || []
+        groups[act.date].push(act)
+      }
+      return groups
     },
   }
 }
