@@ -7,6 +7,7 @@ function Activity(data) {
   var datestr = year + '/' + month + '/' + day
 
   return {
+    user: data.user,
     add: data.add,
     del: data.del,
     time: data.time,
