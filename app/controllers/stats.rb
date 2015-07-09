@@ -5,7 +5,13 @@ Ghcharts::App.controllers :stats do
     render 'stats/index'
   end
 
-  get :json, :map => '/:org/:repo/stats2/json', :provides => :json do
+  get :activity, :map => '/:org/:repo/stats/activity' do
+    @org = params[:org]
+    @repo = params[:repo]
+    render 'stats/activity'
+  end
+
+  get :activity_json, :map => '/:org/:repo/stats/activity/json', :provides => :json do
     org = params[:org]
     repo = params[:repo]
     name = "#{org}/#{repo}"

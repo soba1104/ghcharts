@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title #{@org}/#{@repo}
+    = stylesheet_link_tag 'stats/index'
+    = javascript_include_tag 'jquery-2.1.4'
+    = javascript_include_tag 'Chart'
+    = javascript_include_tag 'vue'
+    = javascript_include_tag 'stats/activity/activities'
+    = javascript_include_tag 'stats/activity/loader'
+    = javascript_include_tag 'stats/activity/boot'
+  body
+    #stats
+      canvas#chart
+      #legends
+        template v-repeat='legend: legends'
+          .legend style='background-color: {{legend.color}}'
+            | {{legend.author}}
