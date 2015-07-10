@@ -20,7 +20,7 @@ Ghcharts::App.controllers :stats do
       # TODO body を定義する
       error(404)
     end
-    activities = Activity.where(repository: repository)
+    activities = Activity.where(repository: repository).includes(:user)
     activities.map{|act|
       {
         repository: name,
