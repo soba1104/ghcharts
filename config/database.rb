@@ -16,6 +16,7 @@ Mongoid::Config.sessions =
   else
     {default: {hosts: ["#{host}:#{port}"], database: database_name}}
   end
+Mongoid.identity_map_enabled = true
 
 # If you want to use a YML file for config, use this instead:
 #
