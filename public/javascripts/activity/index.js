@@ -1,5 +1,12 @@
 $(document).ready(function() {
-  var svm = new Vue({
+  var selected = new Vue({
+    el: '#selected',
+    data: {
+      repositories: [],
+    },
+  })
+
+  var select = new Vue({
     el: '#select',
     data: {
       selected: $('option')[0].text,
@@ -7,6 +14,11 @@ $(document).ready(function() {
     watch: {
       selected: function(n, o) {
         console.log(o + ' => ' + n)
+      },
+    },
+    methods: {
+      add: function() {
+        selected.repositories.push(this.selected)
       },
     },
   })

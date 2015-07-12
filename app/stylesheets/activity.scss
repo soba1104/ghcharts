@@ -12,4 +12,9 @@ body {
   #select {
     @include column(12);
   }
+
+  #selected {
+    @include column(12);
+    @include last;
+  }
 }

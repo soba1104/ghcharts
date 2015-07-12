@@ -13,3 +13,9 @@ html
         select v-model='selected'
           - @repositories.each do |r|
             option = r.name
+        button v-on='click: add'
+          | 追加
+      #selected
+        template v-repeat='repository: repositories'
+          p
+            | {{repository}}
