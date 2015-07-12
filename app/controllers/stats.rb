@@ -20,7 +20,7 @@ Ghcharts::App.controllers :stats do
       # TODO body を定義する
       error(404)
     end
-    start = (Time.now.to_date << 1).to_time # 1ヶ月前
+    start = (Time.now.to_date << 3).to_time # 1ヶ月前
     activities = Activity.where(
       :repository => repository,
       :time.gte => start
