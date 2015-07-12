@@ -1,4 +1,11 @@
 $(document).ready(function() {
+  var lvm = new Vue({
+    el: '#legends',
+    data: {
+      legends: [],
+    },
+  })
+
   var loader = new Loader()
   loader.onload = function(activities) {
     var colors = [
@@ -71,6 +78,7 @@ $(document).ready(function() {
       labels: labels,
       datasets: datasets,
     })
+    lvm.legends = legends
   }
   loader.load($(location).attr('href') + '/json')
 })
