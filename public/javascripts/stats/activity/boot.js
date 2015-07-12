@@ -27,23 +27,25 @@ $(document).ready(function() {
     activities = activities.filter_by_span(num)
     activities = activities.filter_by_user_abs(num)
     var dates_a = activities.dates()
+    var users_a = activities.users_order_by_abs()
     var users_h = activities.group_by_user()
     dates_a = dates_a.sort(function(d0, d1) {
       return d0 > d1 ? 1 : -1;
     })
     var datasets = []
     var legends = []
-    for (var user in users_h) {
+    for (var i = 0; i < users_a.length; i++) {
+      var user = users_a[i]
       var acts = users_h[user]
       var dates_h = {}
-      for (var i = 0; i < acts.length; i++) {
-        var act = acts[i]
+      for (var j = 0; j < acts.length; j++) {
+        var act = acts[j]
         dates_h[act.date] = act
       }
       var adds = []
       var dels = []
-      for (var i = 0; i < dates_a.length; i++) {
-        var date = dates_a[i]
+      for (var j = 0; j < dates_a.length; j++) {
+        var date = dates_a[j]
         var act = dates_h[date]
         if (act) {
           adds.push(act.add)

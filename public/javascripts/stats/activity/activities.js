@@ -11,6 +11,22 @@ function Activities(d) {
       var users_a = Object.keys(users_h)
       return users_a
     },
+    users_order_by_abs: function() {
+      var users_h = this.group_by_user()
+      var users_a = []
+      for (var u in users_h) {
+        var acts = users_h[u]
+        var abs = acts.reduce(function(s, a) {
+          return s + a.add + a.del
+        }, 0)
+        users_a.push([u, abs])
+      }
+      return users_a.sort(function(u0, u1) {
+        var s0 = u0[1]
+        var s1 = u1[1]
+        return s1 - s0
+      }).map(function(u) { return u[0] })
+    },
     filter_by_span: function(span) {
       var data = this.data
       var dates = this.dates().slice(-span)
@@ -22,21 +38,8 @@ function Activities(d) {
     },
     filter_by_user_abs: function(num) {
       var data = this.data
-      var users_h = this.group_by_user()
-      var users_a = []
-      for (var u in users_h) {
-        var acts = users_h[u]
-        var abs = acts.reduce(function(s, a) {
-          return s + a.add + a.del
-        }, 0)
-        users_a.push([u, abs])
-      }
-      users_a = users_a.sort(function(u0, u1) {
-        var s0 = u0[1]
-        var s1 = u1[1]
-        return s1 - s0
-      }).slice(0, num).map(function(u) { return u[0] })
-      users_h = {}
+      var users_a = this.users_order_by_abs().slice(0, num)
+      var users_h = {}
       for (var i = 0; i < users_a.length; i++) {
         users_h[users_a[i]] = true
       }
