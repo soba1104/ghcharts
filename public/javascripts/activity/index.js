@@ -17,6 +17,12 @@ $(document).ready(function() {
         var repository = this.selected
         if (!repositories[repository]) {
           repositories.$add(repository, true)
+          var loader = new Loader()
+          var url = repository + '/stats/activity/json'
+          loader.load_activities(url, function(activities) {
+            console.log("load complete")
+            console.log(activities)
+          })
         }
       },
     },
