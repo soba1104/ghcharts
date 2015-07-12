@@ -16,6 +16,6 @@ html
         button v-on='click: add'
           | 追加
       #selected
-        template v-repeat='repository: repositories'
+        template v-repeat='repositories'
           p
-            | {{repository}}
+            | {{$key}}

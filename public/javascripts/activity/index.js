@@ -2,7 +2,7 @@ $(document).ready(function() {
   var selected = new Vue({
     el: '#selected',
     data: {
-      repositories: [],
+      repositories: {},
     },
   })
 
@@ -11,14 +11,13 @@ $(document).ready(function() {
     data: {
       selected: $('option')[0].text,
     },
-    watch: {
-      selected: function(n, o) {
-        console.log(o + ' => ' + n)
-      },
-    },
     methods: {
       add: function() {
-        selected.repositories.push(this.selected)
+        var repositories = selected.repositories
+        var repository = this.selected
+        if (!repositories[repository]) {
+          repositories.$add(repository, true)
+        }
       },
     },
   })
