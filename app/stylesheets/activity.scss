@@ -5,3 +5,11 @@
 body {
   @include blueprint-typography(true);
 }
+
+#toolbar {
+  @include container;
+
+  #select {
+    @include column(12);
+  }
+}

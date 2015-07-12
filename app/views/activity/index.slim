@@ -6,6 +6,10 @@ html
     = javascript_include_tag 'jquery-2.1.4'
     = javascript_include_tag 'Chart'
     = javascript_include_tag 'vue'
+    = javascript_include_tag 'activity/index'
   body
-    - @repositories.each do |r|
-      p = r.name
+    #toolbar
+      #select
+        select v-model='selected'
+          - @repositories.each do |r|
+            option = r.name
