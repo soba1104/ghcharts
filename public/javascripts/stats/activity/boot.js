@@ -40,7 +40,7 @@ $(document).ready(function() {
         var act = dates_h[date]
         if (act) {
           adds.push(act.add)
-          dels.push(act.del)
+          dels.push(-act.del)
         } else {
           adds.push(0)
           dels.push(0)
@@ -67,8 +67,10 @@ $(document).ready(function() {
       })
     }
     var labels = dates_a
-    console.log(labels)
-    console.log(datasets)
+    new Chart($('#chart').get(0).getContext('2d')).Line({
+      labels: labels,
+      datasets: datasets,
+    })
   }
   loader.load($(location).attr('href') + '/json')
 })

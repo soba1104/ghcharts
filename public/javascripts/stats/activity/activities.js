@@ -27,7 +27,7 @@ function Activities(d) {
       for (var u in users_h) {
         var acts = users_h[u]
         var abs = acts.reduce(function(s, a) {
-          return s + a.add - a.del
+          return s + a.add + a.del
         }, 0)
         users_a.push([u, abs])
       }
