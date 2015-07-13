@@ -18,3 +18,22 @@ body {
     @include last;
   }
 }
+
+#main {
+  @include container;
+
+  #chart {
+    @include column(21);
+  }
+
+  #legends {
+    @include column(2);
+    @include last;
+
+    .legend {
+      @include column(2);
+      @include last;
+      text-align: center;
+    }
+  }
+}

@@ -1,6 +1,9 @@
 function Activities(d) {
   return {
     data: d,
+    merge: function(activities) {
+      return new Activities(this.data.concat(activities.data))
+    },
     dates: function() {
       var dates_h = this.group_by_date()
       var dates_a = Object.keys(dates_h)
