@@ -2,10 +2,10 @@
 # vim:set ft=ruby:
 
 repo = ARGV.last
-path = Padrino.root(Config[:token])
-token = File.read(path)
+token = Config[:token]
+endpoint = Config[:endpoint]
+#Octokit.configure{|c| c.api_endpoint = endpoint }
 client = Octokit::Client.new(:access_token => token)
-
 
 stats = client.contributors_stats(repo)
 users = {}
