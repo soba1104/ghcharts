@@ -1,5 +1,6 @@
 $(document).ready(function() {
   var chart = new Chart($('#chart').get(0).getContext('2d'))
+  var line = null
   var current_activities = new Activities([])
 
   var legends = new Vue({
@@ -49,7 +50,10 @@ $(document).ready(function() {
               'rgba(128, 0, 128, 1)',
             ]
             var data = ChartData.from_activities(current_activities, colors)
-            new Chart($('#chart').get(0).getContext('2d')).Line({
+            if (line) {
+              line.destroy()
+            }
+            line = chart.Line({
               labels: data.labels,
               datasets: data.datasets,
             })
