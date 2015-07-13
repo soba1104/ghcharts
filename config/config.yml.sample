@@ -1,0 +1,9 @@
+:development:
+  :token: 開発環境用のアクセストークン
+  :endpoint 開発環境用のendpoint(例: github.com/api/v3)
+:test:
+  :token: テスト環境用のアクセストークン
+  :endpoint: テスト環境用のendpoint
+:production:
+  :token: 本番環境用のアクセストークン
+  :endpoint: 本番環境用のendpoint
