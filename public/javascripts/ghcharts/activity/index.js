@@ -15,6 +15,12 @@ $(document).ready(function() {
     data: {
       repositories: {},
     },
+    methods: {
+      del: function(e) {
+        var repo = e.target.value
+        console.log(repo)
+      },
+    },
   })
 
   var select = new Vue({

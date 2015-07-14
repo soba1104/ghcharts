@@ -21,8 +21,11 @@ html
           | 追加
       #selected
         template v-repeat='repositories'
-          p
-            | {{$key}}
+          .selected_repository
+            span
+              | {{$key}}
+            button v-on='click: del' value='{{$key}}'
+              | 削除
     #main
       canvas#chart
       #legends
