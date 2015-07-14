@@ -1,6 +1,7 @@
 function Activities(d) {
   return {
     data: d,
+    size: function() { return this.data.length },
     merge: function(activities) {
       return new Activities(this.data.concat(activities.data))
     },
@@ -69,6 +70,11 @@ function Activities(d) {
         groups[act.user].push(act)
       }
       return groups
+    },
+    remove_repository: function(repo) {
+      return new Activities(this.data.filter(function(act) {
+        return act.repository != repo
+      }))
     },
   }
 }

@@ -8,6 +8,7 @@ function Activity(data) {
 
   return {
     user: data.user,
+    repository: data.repository,
     add: data.add,
     del: data.del,
     time: data.time,
