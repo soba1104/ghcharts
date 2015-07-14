@@ -7,7 +7,8 @@ $(document).ready(function() {
   })
 
   var loader = new Loader()
-  loader.onload = function(activities) {
+  var url = $(location).attr('href') + '/json'
+  loader.load_activities(url, function(activities) {
     var colors = [
       'rgba(255, 0, 0, 1)',
       'rgba(0, 255, 0, 1)',
@@ -32,6 +33,5 @@ $(document).ready(function() {
       datasets: datasets,
     })
     lvm.legends = legends
-  }
-  loader.load($(location).attr('href') + '/json')
+  })
 })
