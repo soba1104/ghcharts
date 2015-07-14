@@ -2,12 +2,12 @@
 
 module Ghcharts
   class App
-    module StatsHelper
+    module RepositoryHelper
       # def simple_helper_method
       # ...
       # end
     end
 
-    helpers StatsHelper
+    helpers RepositoryHelper
   end
 end
