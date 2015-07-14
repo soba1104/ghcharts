@@ -29,7 +29,7 @@ $(document).ready(function() {
         if (!repositories[repository]) {
           repositories.$add(repository, true)
           var loader = new Loader()
-          var url = repository + '/stats/activity/json'
+          var url = repository + '/activity/json'
           loader.load_activities(url, function(new_activities) {
             console.log("load complete")
             console.log(new_activities)
