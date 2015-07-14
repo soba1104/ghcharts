@@ -4,7 +4,7 @@
 repo = ARGV.last
 token = Config[:token]
 endpoint = Config[:endpoint]
-#Octokit.configure{|c| c.api_endpoint = endpoint }
+Octokit.configure{|c| c.api_endpoint = endpoint }
 client = Octokit::Client.new(:access_token => token)
 
 stats = client.contributors_stats(repo)
