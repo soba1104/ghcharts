@@ -19,7 +19,8 @@ body {
     @include last;
 
     .repository {
-      @include column(4);
+      float: left;
+      padding: 5px;
     }
   }
 }
