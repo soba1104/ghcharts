@@ -7,6 +7,8 @@ Octokit.configure{|c| c.api_endpoint = endpoint }
 client = Octokit::Client.new(:access_token => token)
 
 repo = ARGV.last
+# 30件以上のプルリクは持ってこれないっぽい。
+# ソート条件の上位30位までが返ってくる。
 pulls = client.pulls(repo, state: 'open')
 pulls.each do |pull|
   url = pull[:html_url]
