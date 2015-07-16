@@ -27,8 +27,8 @@ html
             button v-on='click: del' value='{{$key}}'
               | 削除
     #main
-      canvas#chart
       #legends
         template v-repeat='legend: legends'
           .legend style='background-color: {{legend.color}}'
             | {{legend.user}}
+      canvas#chart
