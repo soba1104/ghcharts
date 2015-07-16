@@ -21,7 +21,7 @@ html
           | 追加
       #selected
         template v-repeat='repositories'
-          .selected_repository
+          .repository
             span
               | {{$key}}
             button v-on='click: del' value='{{$key}}'

@@ -10,12 +10,17 @@ body {
   @include container;
 
   #select {
-    @include column(12);
+    @include column(24);
+    @include last;
   }
 
   #selected {
-    @include column(12);
+    @include column(24);
     @include last;
+
+    .repository {
+      @include column(4);
+    }
   }
 }
 
