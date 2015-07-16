@@ -37,9 +37,9 @@ body {
     @include column(24);
     @include last;
 
-    padding: 10px;
     .legend {
-      @include column(2);
+      float: left;
+      padding: 5px;
       text-align: center;
     }
   }
