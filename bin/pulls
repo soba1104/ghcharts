@@ -1,0 +1,22 @@
+#! /usr/bin/env padrino runner
+# vim:set ft=ruby:
+
+token = Config[:token]
+endpoint = Config[:endpoint]
+Octokit.configure{|c| c.api_endpoint = endpoint }
+client = Octokit::Client.new(:access_token => token)
+
+repo = ARGV.last
+pulls = client.pulls(repo, state: 'open')
+pulls.each do |pull|
+  url = pull[:html_url]
+  state = pull[:state]
+  title = pull[:title]
+  owner = pull[:user][:login]
+  body = pull[:body]
+  puts <<-EOS
+(#{state}):(#{owner}) #{title}
+#{url}
+#{body}
+  EOS
+end
